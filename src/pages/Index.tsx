@@ -7,7 +7,7 @@ import ResultCard from "@/components/ResultCard";
 import Footer from "@/components/Footer";
 import { generateContent, downloadContent, ContentResult } from "@/services/geminiService";
 import { toast } from "sonner";
-import { Download } from "lucide-react";
+import { Download, Sparkles } from "lucide-react";
 
 const Index = () => {
   const [result, setResult] = useState<ContentResult | null>(null);
@@ -47,12 +47,26 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="flex-1">
-        <section className="container max-w-5xl py-10 space-y-8">
-          <InputForm onSubmit={handleSubmit} isLoading={isLoading} />
+      <div className="hero-section w-full py-12 px-4 hero-gradient subtle-pattern">
+        <div className="container max-w-5xl mx-auto text-center space-y-4">
+          <div className="inline-block p-2 bg-primary/10 rounded-full mb-2">
+            <Sparkles className="h-6 w-6 text-primary" />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Generate AI-Powered YouTube Content</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Create SEO-optimized titles, descriptions, and tags for your videos in seconds using advanced AI.
+          </p>
+        </div>
+      </div>
+
+      <main className="flex-1 py-8">
+        <section className="container max-w-5xl space-y-10">
+          <div className="fade-in">
+            <InputForm onSubmit={handleSubmit} isLoading={isLoading} />
+          </div>
           
           {isLoading && (
-            <div className="flex justify-center items-center py-12">
+            <div className="flex justify-center items-center py-12 fade-in">
               <div className="loading-spinner">
                 <svg className="animate-spin h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -69,7 +83,7 @@ const Index = () => {
                 <Button 
                   onClick={handleDownload} 
                   variant="outline"
-                  className="gap-2"
+                  className="gap-2 scale-in"
                 >
                   <Download className="h-4 w-4" />
                   Download
@@ -80,17 +94,17 @@ const Index = () => {
                 <ResultCard 
                   title="YouTube Title" 
                   content={result.title} 
-                  className="lg:col-span-4"
+                  className="lg:col-span-4 staggered-item slide-in"
                 />
                 <ResultCard 
                   title="Description" 
                   content={result.description} 
-                  className="lg:col-span-3"
+                  className="lg:col-span-3 staggered-item slide-in"
                 />
                 <ResultCard 
                   title="Tags" 
                   content={result.tags} 
-                  className="lg:col-span-1"
+                  className="lg:col-span-1 staggered-item slide-in"
                 />
               </div>
             </div>

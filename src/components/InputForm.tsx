@@ -44,7 +44,7 @@ export default function InputForm({ onSubmit, isLoading }: InputFormProps) {
   ];
 
   return (
-    <Card className="w-full">
+    <Card className="w-full enhanced-card">
       <CardHeader>
         <CardTitle className="text-xl sm:text-2xl">Generate YouTube Content</CardTitle>
       </CardHeader>
@@ -97,7 +97,7 @@ export default function InputForm({ onSubmit, isLoading }: InputFormProps) {
           
           <Button 
             type="submit" 
-            className="w-full" 
+            className="w-full scale-in" 
             disabled={isLoading}
             size="lg"
           >
